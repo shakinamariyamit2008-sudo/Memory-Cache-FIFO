@@ -1,0 +1,12 @@
+--- Memory Cache System ---
+Enter item: A
+Cache: A
+
+Enter item: B
+Cache: A B
+
+Enter item: C
+Cache: A B C
+
+Enter item: D
+Cache: B C D
