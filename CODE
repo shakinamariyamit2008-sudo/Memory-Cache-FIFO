@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <string.h>
+
+#define SIZE 3
+
+char cache[SIZE][50];
+int count = 0;
+
+// Add item to cache
+void addItem(char item[]) {
+    if (count < SIZE) {
+        strcpy(cache[count], item);
+        count++;
+    } else {
+        // Shift left (remove oldest)
+        for (int i = 1; i < SIZE; i++) {
+            strcpy(cache[i - 1], cache[i]);
+        }
+        strcpy(cache[SIZE - 1], item);
+    }
+}
+
+// Display cache
+void display() {
+    printf("Cache: ");
+    for (int i = 0; i < count; i++) {
+        printf("%s ", cache[i]);
+    }
+    printf("\n");
+}
+
+int main() {
+    int choice;
+    char item[50];
+
+    while (1) {
+        printf("\n--- Memory Cache System ---\n");
+        printf("1. Add Item\n");
+        printf("2. Display Cache\n");
+        printf("3. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        if (choice == 1) {
+            printf("Enter item: ");
+            scanf("%s", item);
+            addItem(item);
+        } 
+        else if (choice == 2) {
+            display();
+        } 
+        else if (choice == 3) {
+            break;
+        } 
+        else {
+            printf("Invalid choice\n");
+        }
+    }
+
+    return 0;
+}
